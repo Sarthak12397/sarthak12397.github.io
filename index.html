@@ -18,103 +18,29 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.7;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height%3E'100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.45}
-
-/* ─── NAV ─── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.25rem 3rem;
-  background:rgba(7,11,16,0.92);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.45}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(7,11,16,0.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
 .nav-logo{font-family:var(--fm);font-size:0.85rem;color:var(--gold);letter-spacing:0.05em;text-decoration:none}
-
-/* Desktop links */
 .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
 .nav-links a{font-size:0.78rem;font-family:var(--fm);color:var(--secondary);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover{color:var(--text)}
 .nav-cta{color:var(--gold)!important;border:1px solid var(--gold-dim);padding:0.35rem 0.9rem;border-radius:4px;transition:background 0.2s!important}
 .nav-cta:hover{background:rgba(232,160,48,0.1)!important}
-
-/* ─── HAMBURGER ─── */
-.hamburger{
-  display:none;
-  flex-direction:column;justify-content:center;align-items:center;
-  width:38px;height:38px;
-  background:transparent;border:1px solid var(--border-bright);
-  border-radius:6px;cursor:pointer;gap:5px;padding:8px;
-  transition:border-color 0.2s;
-}
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:38px;height:38px;background:transparent;border:1px solid var(--border-bright);border-radius:6px;cursor:pointer;gap:5px;padding:8px;transition:border-color 0.2s}
 .hamburger:hover{border-color:var(--secondary)}
-.hamburger span{
-  display:block;width:18px;height:1.5px;
-  background:var(--secondary);
-  border-radius:2px;
-  transition:all 0.3s ease;
-  transform-origin:center;
-}
-
-/* Hamburger → X when open */
+.hamburger span{display:block;width:18px;height:1.5px;background:var(--secondary);border-radius:2px;transition:all 0.3s ease;transform-origin:center}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--gold)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--gold)}
-
-/* ─── MOBILE MENU DRAWER ─── */
-.mobile-menu{
-  display:none;
-  position:fixed;
-  top:64px; /* height of nav */
-  left:0;right:0;
-  background:rgba(7,11,16,0.97);
-  backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-  z-index:99;
-  padding:0;
-  max-height:0;
-  overflow:hidden;
-  transition:max-height 0.35s ease, padding 0.35s ease;
-}
-.mobile-menu.open{
-  max-height:420px;
-  padding:1.5rem 0 2rem;
-}
-.mobile-menu ul{
-  list-style:none;
-  display:flex;flex-direction:column;
-}
-.mobile-menu ul li{
-  border-bottom:1px solid var(--border);
-}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(7,11,16,0.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);z-index:99;padding:0;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease}
+.mobile-menu.open{max-height:420px;padding:1.5rem 0 2rem}
+.mobile-menu ul{list-style:none;display:flex;flex-direction:column}
+.mobile-menu ul li{border-bottom:1px solid var(--border)}
 .mobile-menu ul li:last-child{border-bottom:none}
-.mobile-menu ul a{
-  display:block;
-  padding:1rem 2rem;
-  font-family:var(--fm);font-size:0.82rem;
-  color:var(--secondary);text-decoration:none;
-  letter-spacing:0.1em;text-transform:uppercase;
-  transition:color 0.2s, background 0.2s;
-}
-.mobile-menu ul a:hover,
-.mobile-menu ul a:active{color:var(--text);background:rgba(255,255,255,0.03)}
-.mobile-menu .m-cta{
-  margin:1.25rem 2rem 0;
-  display:block;
-  padding:0.75rem 1.25rem;
-  text-align:center;
-  font-family:var(--fm);font-size:0.8rem;
-  color:var(--gold)!important;
-  border:1px solid var(--gold-dim);
-  border-radius:6px;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  text-decoration:none;
-  transition:background 0.2s;
-}
+.mobile-menu ul a{display:block;padding:1rem 2rem;font-family:var(--fm);font-size:0.82rem;color:var(--secondary);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s,background 0.2s}
+.mobile-menu ul a:hover,.mobile-menu ul a:active{color:var(--text);background:rgba(255,255,255,0.03)}
+.mobile-menu .m-cta{margin:1.25rem 2rem 0;display:block;padding:0.75rem 1.25rem;text-align:center;font-family:var(--fm);font-size:0.8rem;color:var(--gold)!important;border:1px solid var(--gold-dim);border-radius:6px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
 .mobile-menu .m-cta:hover{background:rgba(232,160,48,0.1)}
-
-/* ─── HERO ─── */
 .hero{min-height:100vh;display:flex;align-items:center;padding:7rem 3rem 5rem;position:relative;overflow:hidden}
 .hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(28,40,64,0.3) 1px,transparent 1px),linear-gradient(90deg,rgba(28,40,64,0.3) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 40%,black 40%,transparent 100%)}
 .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 360px;gap:4rem;align-items:center;max-width:1200px;margin:0 auto;width:100%}
@@ -130,8 +56,6 @@ h1 span{color:var(--gold)}
 .btn-p:hover{background:#F5B040;transform:translateY(-1px);box-shadow:0 8px 24px rgba(232,160,48,0.2)}
 .btn-g{background:transparent;color:var(--text);border:1px solid var(--border-bright)}
 .btn-g:hover{border-color:var(--secondary);background:rgba(255,255,255,0.03)}
-
-/* ─── TERMINAL ─── */
 .terminal{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;font-family:var(--fm);font-size:0.78rem}
 .tbar{background:var(--elevated);padding:0.72rem 1rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border)}
 .dot{width:10px;height:10px;border-radius:50%}
@@ -146,19 +70,13 @@ h1 span{color:var(--gold)}
 .status{display:flex;align-items:center;gap:0.75rem;margin-top:1.1rem;padding:0.65rem 1rem;background:rgba(0,200,160,0.06);border:1px solid rgba(0,200,160,0.15);border-radius:6px;font-family:var(--fm);font-size:0.7rem;color:var(--teal)}
 .sdot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(0.9)}}
-
-/* ─── SHARED ─── */
 .sw{padding:5.5rem 3rem;border-top:1px solid var(--border)}
 .inn{max-width:1200px;margin:0 auto}
 .sl{font-family:var(--fm);font-size:0.67rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem;display:flex;align-items:center;gap:0.75rem}
 .sl::after{content:'';flex:1;height:1px;background:var(--border);max-width:55px}
 h2{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.03em;color:#E8ECF4;margin-bottom:1rem}
-
-/* ─── STACK ─── */
 .stack-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
 .stag{font-family:var(--fm);font-size:0.72rem;padding:0.3rem 0.75rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;color:var(--secondary)}
-
-/* ─── EXPERIENCE ─── */
 .elist{display:flex;flex-direction:column;gap:1rem;margin-top:2.5rem}
 .ei{display:grid;grid-template-columns:185px 1fr;gap:2rem;padding:1.5rem 1.75rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;transition:border-color 0.2s}
 .ei:hover{border-color:var(--border-bright)}
@@ -170,8 +88,6 @@ h2{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;le
 .ebl li{font-size:0.875rem;color:var(--secondary);padding:0.25rem 0;display:flex;align-items:flex-start;gap:0.5rem;line-height:1.6;border-bottom:1px solid var(--border)}
 .ebl li:last-child{border-bottom:none;padding-bottom:0}
 .ebl li::before{content:'›';color:var(--gold);flex-shrink:0}
-
-/* ─── PROJECTS ─── */
 .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
 .pc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.75rem;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.25s,transform 0.25s}
 .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity 0.25s}
@@ -186,26 +102,18 @@ h2{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;le
 .pf li::before{content:'›';color:var(--gold);flex-shrink:0}
 .plink{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--fm);font-size:0.68rem;color:var(--gold);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;border-top:1px solid var(--border);padding-top:0.9rem;transition:gap 0.2s;margin-top:auto}
 .plink:hover{gap:0.7rem}
-
-/* ─── CONTACT ─── */
 .cinn{max-width:580px;margin:0 auto;text-align:center}
 .cintro{font-size:0.95rem;color:var(--secondary);line-height:1.85;margin-top:1.5rem;margin-bottom:2.5rem}
 .clinks{display:flex;justify-content:center;gap:0.8rem;flex-wrap:wrap}
 .clink{display:inline-flex;align-items:center;gap:0.45rem;padding:0.65rem 1.2rem;border:1px solid var(--border-bright);border-radius:6px;font-family:var(--fm);font-size:0.76rem;color:var(--secondary);text-decoration:none;letter-spacing:0.05em;transition:all 0.2s}
 .clink:hover{color:var(--text);border-color:var(--secondary);background:rgba(255,255,255,0.02)}
 .clink svg{width:14px;height:14px;flex-shrink:0}
-
-/* ─── FOOTER ─── */
 footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;align-items:center;justify-content:space-between}
 .fn{font-family:var(--fm);font-size:0.7rem;color:var(--muted)}
 .fedu{font-family:var(--fm);font-size:0.67rem;color:var(--muted);text-align:right;line-height:1.7}
-
-/* ─── ANIMATIONS ─── */
 .fi{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
 .fi.vis{opacity:1;transform:none}
 .d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
-
-/* ─── RESPONSIVE ─── */
 @media(max-width:960px){
   nav{padding:1rem 1.5rem}
   .hero-inner{grid-template-columns:1fr;gap:2.5rem}
@@ -215,38 +123,22 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
   footer{flex-direction:column;gap:0.75rem;text-align:center;padding:1.5rem}
   .fedu{text-align:center}
 }
-
-/* ─── MOBILE NAV BREAKPOINT ─── */
 @media(max-width:768px){
-  /* Hide desktop links, show hamburger */
   .nav-links{display:none}
   .hamburger{display:flex}
   .mobile-menu{display:block}
-
-  /* Tighten nav */
   nav{padding:1rem 1.25rem}
-
-  /* Hero tweaks */
   .hero{padding:6rem 1.25rem 3.5rem}
   h1{font-size:2.8rem}
   .tagline{font-size:0.95rem}
   .actions{flex-direction:column}
   .btn{justify-content:center;text-align:center}
-
-  /* Sections */
   .sw{padding:3.5rem 1.25rem}
-
-  /* Experience stacked */
   .ei{grid-template-columns:1fr;gap:0.5rem;padding:1.25rem}
-
-  /* Contact links stack */
   .clinks{flex-direction:column;align-items:stretch}
   .clink{justify-content:center}
-
-  /* Footer */
   footer{padding:1.25rem}
 }
-
 @media(max-width:400px){
   h1{font-size:2.4rem}
   .terminal{font-size:0.7rem}
@@ -256,11 +148,8 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
 <nav>
   <a href="#" class="nav-logo">S.SHRESTHA</a>
-
-  <!-- Desktop -->
   <ul class="nav-links">
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -268,16 +157,11 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
     <li><a href="https://dev.to/kkyser737/what-leetcode-optimizes-for-vs-what-actual-production-systems-demand-4d1a" target="_blank" rel="noopener">Notes ↗</a></li>
     <li><a href="https://github.com/Sarthak12397" target="_blank" rel="noopener" class="nav-cta">GitHub ↗</a></li>
   </ul>
-
-  <!-- Hamburger -->
   <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- Mobile Drawer -->
 <div class="mobile-menu" id="mobileMenu" role="navigation">
   <ul>
     <li><a href="#experience" class="mobile-link">Experience</a></li>
@@ -288,14 +172,13 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
   <a href="https://github.com/Sarthak12397" target="_blank" rel="noopener" class="m-cta">GitHub ↗</a>
 </div>
 
-<!-- ─── HERO ─── -->
 <div class="hero">
   <div class="hgrid"></div>
   <div class="hero-inner">
     <div>
       <p class="eyebrow">.NET Backend Engineer</p>
       <h1>Sarthak<br><span>Shrestha</span></h1>
-      <p class="tagline">Backend engineer building <strong>financial systems that stay correct under failure</strong> — payment pipelines, reconciliation engines, and ledgers where every invariant holds.</p>
+      <p class="tagline">Backend engineer building <strong>reliable financial systems</strong> — payment pipelines, reconciliation engines, and ledgers using .NET, PostgreSQL, and Hangfire.</p>
       <div class="actions">
         <a href="#projects" class="btn btn-p">View Projects</a>
         <a href="https://github.com/Sarthak12397" target="_blank" rel="noopener" class="btn btn-g">GitHub →</a>
@@ -318,7 +201,7 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
           <span class="tl"><span class="tk">"target"</span><span class="tx">:</span>   <span class="ts">"NZ · AU · Remote"</span></span>
           <span class="tb"></span>
           <span class="tl"><span class="tp">$</span> <span class="tc">./serve</span></span>
-          <span class="tl"><span class="tv">▶ All invariants intact.</span> <span class="cursor"></span></span>
+          <span class="tl"><span class="tv">▶ Systems running.</span> <span class="cursor"></span></span>
         </div>
       </div>
       <div class="status"><div class="sdot"></div>Open to remote — NZ · AU · Malaysia</div>
@@ -326,13 +209,11 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
   </div>
 </div>
 
-<!-- ─── EXPERIENCE ─── -->
 <div class="sw" id="experience">
   <div class="inn">
     <p class="sl fi">Experience</p>
     <h2 class="fi">Where I've shipped.</h2>
     <div class="elist">
-
       <div class="ei fi">
         <div>
           <p class="ep">Sep 2025 – Present</p>
@@ -342,14 +223,15 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
         <div>
           <p class="er">C#/.NET Backend Developer</p>
           <ul class="ebl">
-            <li>Prevented duplicate charges under concurrent retry conditions via database-level idempotency</li>
-            <li>Reduced manual intervention with automated Hangfire recovery jobs for stalled transactions</li>
-            <li>Built reconciliation workflows detecting drift between internal state and external providers</li>
-            <li>Enforced correct parallel worker execution using atomic state transitions</li>
+            <li>Developed and maintained ASP.NET Core backend services for payment processing and reconciliation workflows</li>
+            <li>Implemented idempotency checks using database constraints to prevent duplicate transactions under retry conditions</li>
+            <li>Designed transaction state management using a state machine to handle concurrent processing safely</li>
+            <li>Set up Hangfire background jobs for retry scheduling, stuck transaction recovery, and periodic reconciliation tasks</li>
+            <li>Built reconciliation service comparing internal records with external provider responses and routing mismatches through automated escalation</li>
+            <li>Added structured logging with Serilog and correlation IDs to support debugging across async workflows</li>
           </ul>
         </div>
       </div>
-
       <div class="ei fi d1">
         <div>
           <p class="ep">May 2024 – Mar 2025</p>
@@ -359,11 +241,11 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
         <div>
           <p class="er">Web Developer · Remote</p>
           <ul class="ebl">
-            <li>Delivered features for Australian clients in a fully remote, async-first team</li>
+            <li>Built a client-facing website and contributed to small web projects for Australian businesses</li>
+            <li>Worked independently in a remote async environment, managing tasks and communicating across time zones</li>
           </ul>
         </div>
       </div>
-
       <div class="ei fi d2">
         <div>
           <p class="ep">Sep 2023 – May 2024</p>
@@ -371,68 +253,62 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
           <p class="el">Kathmandu, Nepal</p>
         </div>
         <div>
-          <p class="er">Junior Developer / QA</p>
+          <p class="er">Junior Developer</p>
           <ul class="ebl">
-            <li>Supported QA workflows and testing cycles across multiple product releases</li>
+            <li>Assisted the development team with QA testing on web projects, identifying and reporting issues across releases</li>
+            <li>Supported data entry and helped maintain internal records and project documentation</li>
           </ul>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- ─── PROJECTS ─── -->
 <div class="sw" id="projects">
   <div class="inn">
     <p class="sl fi">Projects</p>
     <h2 class="fi">Three systems forming a<br>financial backend workflow.</h2>
     <div class="pg">
-
       <div class="pc fi">
         <p class="pn">01 · FinancialLedgerEngine</p>
         <h3 class="pt">Financial Ledger Engine</h3>
         <p class="ps">Double-entry · Append-only · Balance invariants</p>
         <ul class="pf">
-          <li>Domain-enforced double-entry: total debits = total credits, always</li>
-          <li>Append-only records — no UPDATE ever, full audit trail by design</li>
+          <li>Domain-enforced double-entry: every journal entry requires balanced debits and credits</li>
+          <li>Append-only records — balances computed from transaction history, not stored directly</li>
           <li>Idempotency layer preventing duplicate money movement under retries</li>
-          <li>UnitOfWork boundary making partial writes physically impossible</li>
+          <li>Atomic transaction boundary — partial writes impossible</li>
           <li>BalanceVerificationJob + 7 xUnit tests proving mathematical correctness</li>
         </ul>
         <a href="https://github.com/Sarthak12397/Financial_ledger_system" target="_blank" rel="noopener" class="plink">GitHub →</a>
       </div>
-
       <div class="pc fi d1">
         <p class="pn">02 · TransactionalBusinessAPI</p>
         <h3 class="pt">Payment Processing System</h3>
         <p class="ps">8-state lifecycle · DB-level idempotency · Retry orchestration</p>
         <ul class="pf">
           <li>8-state guarded lifecycle — invalid transitions rejected at domain layer</li>
-          <li>Idempotency via DB unique constraint, not application-layer locks</li>
+          <li>Idempotency via DB unique constraint so repeated requests return consistent results</li>
           <li>Partial failure handling: DB write succeeds, response fails — safe retry</li>
-          <li>Exponential backoff + 15-min stuck transaction recovery job</li>
-          <li>Serilog Correlation ID tracing · 14 xUnit tests</li>
+          <li>Exponential backoff + automatic stuck transaction recovery job</li>
+          <li>Serilog Correlation ID tracing · 14 xUnit tests · Docker</li>
         </ul>
         <a href="https://github.com/Sarthak12397/TransactionalBusinessAPI" target="_blank" rel="noopener" class="plink">GitHub →</a>
       </div>
-
       <div class="pc fi d2">
         <p class="pn">03 · Transaction-Reconciliation-Engine</p>
         <h3 class="pt">Reconciliation &amp; Consistency Monitor</h3>
-        <p class="ps">7-state lifecycle · Dead-letter handling · Idempotent re-runs</p>
+        <p class="ps">7-state lifecycle · Automated escalation · Dead-letter recovery</p>
         <ul class="pf">
-          <li>Detects and classifies drift between internal state and external providers</li>
-          <li>Idempotent re-runs — repeatable without cascading inconsistencies</li>
-          <li>Exponential backoff retry budget + dead-letter — no silent failures</li>
-          <li>Pluggable external system client interface</li>
+          <li>Compares internal transaction records against external provider responses to catch discrepancies</li>
+          <li>Mismatches trigger automated escalation through dead-letter pipeline with structured logging</li>
+          <li>Transient failures retried with exponential backoff — unresolved cases dead-lettered with requeue endpoint</li>
+          <li>Idempotent re-runs — safe to reprocess without duplicate side effects</li>
           <li>9 unit tests · Dockerised</li>
         </ul>
         <a href="https://github.com/Sarthak12397/Transaction-Reconciliation-Engine" target="_blank" rel="noopener" class="plink">GitHub →</a>
       </div>
-
     </div>
-
     <div class="fi" style="margin-top:2rem">
       <p style="font-family:var(--fm);font-size:0.67rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem">Stack across all projects</p>
       <div class="stack-row">
@@ -447,11 +323,9 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
         <span class="stag">Clean Architecture</span>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- ─── CONTACT ─── -->
 <div class="sw" id="contact">
   <div class="cinn">
     <p class="sl fi" style="justify-content:center">Contact</p>
@@ -478,7 +352,6 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
   </div>
 </div>
 
-<!-- ─── FOOTER ─── -->
 <footer>
   <span class="fn">Sarthak Shrestha · Backend Engineer · Kathmandu, Nepal</span>
   <div class="fedu">
@@ -488,27 +361,21 @@ footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;alig
 </footer>
 
 <script>
-// ─── Intersection observer for fade-ins ───
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-
-// ─── Hamburger toggle ───
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-
+const nav = document.querySelector('nav');
 hamburger.addEventListener('click', () => {
   const isOpen = hamburger.classList.toggle('open');
   mobileMenu.classList.toggle('open', isOpen);
   hamburger.setAttribute('aria-expanded', isOpen);
-  // Prevent body scroll when menu is open
   document.body.style.overflow = isOpen ? 'hidden' : '';
 });
-
-// ─── Close menu when a link is tapped ───
 document.querySelectorAll('.mobile-link').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('open');
@@ -517,8 +384,6 @@ document.querySelectorAll('.mobile-link').forEach(link => {
     document.body.style.overflow = '';
   });
 });
-
-// ─── Close menu on outside tap ───
 document.addEventListener('click', (e) => {
   if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
     hamburger.classList.remove('open');
@@ -527,7 +392,6 @@ document.addEventListener('click', (e) => {
     document.body.style.overflow = '';
   }
 });
-const nav = document.querySelector('nav');
 </script>
 </body>
 </html>
